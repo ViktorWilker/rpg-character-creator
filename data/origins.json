@@ -1,0 +1,280 @@
+{
+  "origens": [
+    {
+      "id": "Erudito_Arcano",
+      "nome": "Erudito Arcano",
+      "pericias": ["Arcano", "Investigacao"],
+      "poder": {
+        "nome": "Saber e Poder",
+        "descricao": "Quando realiza um teste de Arcano ou Investigacao, pode gastar 2 PE para rolar novamente um dado e escolher o melhor resultado."
+      }
+    },
+    {
+      "id": "Curandeiro_de_Aldeia",
+      "nome": "Curandeiro de Aldeia",
+      "pericias": ["Intuicao", "Medicina"],
+      "poder": {
+        "nome": "Maos Abencadas",
+        "descricao": "Pode estabilizar um aliado a beira da morte automaticamente, sem necessidade de teste."
+      }
+    },
+    {
+      "id": "Amnesico",
+      "nome": "Amnesico",
+      "pericias": [],
+      "pericias_livres": 2,
+      "pericias_nota": "Duas a escolha do mestre",
+      "poder": {
+        "nome": "Ecos do Passado",
+        "descricao": "Uma vez por sessao, pode pedir ao mestre uma lembranca vaga que conceda uma pista ou vantagem narrativa. (DT 10)"
+      }
+    },
+    {
+      "id": "Bardo_Errante",
+      "nome": "Bardo Errante",
+      "pericias": ["Artes", "Enganacao"],
+      "poder": {
+        "nome": "Magnum Opus",
+        "descricao": "Uma vez por missao, pode determinar que um personagem envolvido em uma cena de interacao o reconheca. Recebe +5 em testes de Presenca e de pericias baseadas em presenca contra aquele personagem."
+      }
+    },
+    {
+      "id": "Gladiador",
+      "nome": "Gladiador",
+      "pericias": ["Acrobacia", "Atletismo"],
+      "poder": {
+        "nome": "110%",
+        "descricao": "Quando faz um teste de pericia usando Forca ou Agilidade (exceto luta e pontaria), pode gastar 2 PE para receber +5 no teste."
+      }
+    },
+    {
+      "id": "Alquimista_de_Ervas",
+      "nome": "Alquimista de Ervas",
+      "pericias": ["Fortitude", "Profissao"],
+      "poder": {
+        "nome": "Essencia Secreta",
+        "descricao": "Pode criar uma dose de tonico rudimentar que restaura 1d4 PV ou fornece resistencia leve a veneno."
+      }
+    },
+    {
+      "id": "Ladrao_de_Ruinas",
+      "nome": "Ladrao de Ruinas",
+      "pericias": ["Crime", "Furtividade"],
+      "poder": {
+        "nome": "O Crime Compensa",
+        "descricao": "Uma vez por missao, pode obter um item util ou informacao ao vasculhar ruinas ou cadaveres."
+      }
+    },
+    {
+      "id": "Ex_Iniciado_das_Trevas",
+      "nome": "Ex-Iniciado das Trevas",
+      "pericias": ["Arcano", "Religiao"],
+      "poder": {
+        "nome": "Marcas do Abismo",
+        "descricao": "Uma vez por missao, pode usar um pequeno fragmento de poder profano para obter vantagem em um teste sobrenatural."
+      }
+    },
+    {
+      "id": "Sobrevivente_das_Terras_Vazias",
+      "nome": "Sobrevivente das Terras Vazias",
+      "pericias": ["Fortitude", "Sobrevivencia"],
+      "poder": {
+        "nome": "Calejado",
+        "descricao": "Reduz em 1 o dano recebido de fontes nao magicas."
+      }
+    },
+    {
+      "id": "Artifice_Mecanico",
+      "nome": "Artifice Mecanico",
+      "pericias": ["Profissao", "Tecnologia"],
+      "poder": {
+        "nome": "Ferramentas Favoritas",
+        "descricao": "Ignora penalidades por falta de ferramentas simples (como martelo, alicate, cinzel)."
+      }
+    },
+    {
+      "id": "Mercador_Astuto",
+      "nome": "Mercador Astuto",
+      "pericias": ["Diplomacia", "Profissao"],
+      "poder": {
+        "nome": "Negociacao Rapida",
+        "descricao": "Uma vez por sessao, pode conseguir um pequeno desconto ou troca vantajosa."
+      }
+    },
+    {
+      "id": "Cacador_de_Segredos",
+      "nome": "Cacador de Segredos",
+      "pericias": ["Investigacao", "Percepcao"],
+      "poder": {
+        "nome": "Faro para Pistas",
+        "descricao": "Uma vez por cena, pode perguntar ao mestre uma pista adicional em uma investigacao."
+      }
+    },
+    {
+      "id": "Brutamontes",
+      "nome": "Brutamontes",
+      "pericias": ["Luta", "Reflexos"],
+      "poder": {
+        "nome": "Mao Pesada",
+        "descricao": "Em ataques desarmados, causa +2 de dano."
+      }
+    },
+    {
+      "id": "Patrono_Misterioso",
+      "nome": "Patrono Misterioso",
+      "pericias": ["Diplomacia", "Pilotagem"],
+      "poder": {
+        "nome": "Benfeitor Sombrio",
+        "descricao": "Uma vez por missao, pode receber ajuda ou recurso misterioso, com possiveis consequencias."
+      }
+    },
+    {
+      "id": "Mercenario",
+      "nome": "Mercenario",
+      "pericias": ["Iniciativa", "Intimidacao"],
+      "poder": {
+        "nome": "Postura de Combate",
+        "descricao": "Pode rolar novamente uma jogada de Iniciativa e ficar com o melhor resultado."
+      }
+    },
+    {
+      "id": "Soldado_Veterano",
+      "nome": "Soldado Veterano",
+      "pericias": ["Pontaria", "Tatica"],
+      "poder": {
+        "nome": "Para Bellum",
+        "descricao": "Voce recebe +2 em rolagens de dano com armas de fogo."
+      }
+    },
+    {
+      "id": "Mineiro_das_Profundezas",
+      "nome": "Mineiro das Profundezas",
+      "pericias": ["Fortitude", "Profissao"],
+      "poder": {
+        "nome": "Ferramentas de Escavacao",
+        "descricao": "Pode identificar estruturas instaveis e evitar desabamentos."
+      }
+    },
+    {
+      "id": "Guarda_da_Cidade",
+      "nome": "Guarda da Cidade",
+      "pericias": ["Percepcao", "Pontaria"],
+      "poder": {
+        "nome": "Patrulheiro",
+        "descricao": "Pode realizar uma acao de vigilancia para nao ser surpreendido."
+      }
+    },
+    {
+      "id": "Sacerdote",
+      "nome": "Sacerdote",
+      "pericias": ["Religiao", "Vontade"],
+      "poder": {
+        "nome": "Milagre Menor",
+        "descricao": "Uma vez por missao, pode pedir uma bencao para refazer um teste de Vontade."
+      }
+    },
+    {
+      "id": "Escriba_do_Conselho",
+      "nome": "Escriba do Conselho",
+      "pericias": ["Intuicao", "Vontade"],
+      "poder": {
+        "nome": "Espirito Dedicado",
+        "descricao": "Uma vez por sessao, pode ignorar penalidades mentais (medo, confusao) por 1 turno."
+      }
+    },
+    {
+      "id": "Profeta_de_Ruinas",
+      "nome": "Profeta de Ruinas",
+      "pericias": ["Investigacao", "Arcano"],
+      "poder": {
+        "nome": "Eu Ja Sabia",
+        "descricao": "Uma vez por missao, pode declarar que previra um evento e ganhar uma pequena vantagem narrativa."
+      }
+    },
+    {
+      "id": "Tecnoarcheologo",
+      "nome": "Tecnoarqueologo",
+      "pericias": ["Investigacao", "Tecnologia"],
+      "poder": {
+        "nome": "Rastreamento Antigo",
+        "descricao": "Pode identificar dispositivos magicos ou automatos e entender parcialmente seu funcionamento."
+      }
+    },
+    {
+      "id": "Campones_Errante",
+      "nome": "Campones Errante",
+      "pericias": ["Adestramento", "Sobrevivencia"],
+      "poder": {
+        "nome": "Desbravador",
+        "descricao": "Ignora penalidades por terreno dificil durante viagens."
+      }
+    },
+    {
+      "id": "Charlata o",
+      "nome": "Charlata o",
+      "pericias": ["Crime", "Enganacao"],
+      "poder": {
+        "nome": "Impostor",
+        "descricao": "Pode fingir outra identidade com facilidade, ganhando vantagem em testes sociais enquanto o disfrace durar."
+      }
+    },
+    {
+      "id": "Aprendiz_Academia_Arcana",
+      "nome": "Aprendiz de Academia Arcana",
+      "pericias": ["Atualidades", "Investigacao"],
+      "poder": {
+        "nome": "Dedicacao",
+        "descricao": "Uma vez por missao, pode gastar 1 Estamina para rerrolar um teste de Arcano ou Investigacao."
+      }
+    },
+    {
+      "id": "Sobrevivente_das_Trevas",
+      "nome": "Sobrevivente das Trevas",
+      "pericias": ["Reflexos", "Vontade"],
+      "poder": {
+        "nome": "Cicatrizes Profundas",
+        "descricao": "Quando sofre dano que o deixaria inconsciente, pode permanecer em pe com 1 PV (uma vez por missao)."
+      }
+    }
+  ],
+
+  "classes": {
+    "Combatente": {
+      "pv_base": 20,
+      "pe_base": 6,
+      "mana_base": 0,
+      "pericias_fixas_escolha": [
+        ["Luta", "Pontaria"],
+        ["Fortitude", "Reflexos"]
+      ],
+      "pericias_livres": 1,
+      "pericias_por_int": 1
+    },
+    "Especialista": {
+      "pv_base": 16,
+      "pe_base": 8,
+      "mana_base": 0,
+      "pericias_fixas_escolha": [],
+      "pericias_livres": 7,
+      "pericias_por_int": 1
+    },
+    "Ocultista": {
+      "pv_base": 12,
+      "pe_base": 4,
+      "mana_base": 8,
+      "pericias_fixas": ["Ocultismo", "Vontade"],
+      "pericias_livres": 3,
+      "pericias_por_int": 1
+    }
+  },
+
+  "atributos": {
+    "pontos_iniciais": 4,
+    "valor_base": 1,
+    "valor_maximo": 3,
+    "pode_zerar": true,
+    "bonus_por_zero": 1
+  },
+
+  "pericias_duplicada": "veterano"
+}

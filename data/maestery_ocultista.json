@@ -1,0 +1,22 @@
+{
+    "5%": {"pe limit": "1","Skill": "Eclético, Perito(2Pe, +1d6)"},
+    "10%":{"pe limit": "2","Skill": "Habilidade de Trilha"},
+    "15%":{"pe limit": "3","Skill": "Poder de Especialista"},
+    "20%":{"pe limit": "4","Skill": "Aumento de Atributo"},
+    "25%":{"pe limit": "5","Skill": "Perito (3PE, +1d8)"},
+    "30%":{"pe limit": "6","Skill": "Poder de Especialista"},
+    "35%":{"pe limit": "7","Skill": "Grau de Treinamento"},
+    "40%":{"pe limit": "8","Skill": "Engenhosidade(veterano), Habilidade de Trilha"},
+    "45%":{"pe limit": "9","Skill": "Poder de Especialista"},
+    "50%":{"pe limit": "10","Skill": "Aumento de Atributo, versatilidade"},
+    "55%":{"pe limit": "11","Skill": "Perito (4PE, +1d10)"},
+    "60%":{"pe limit": "12","Skill": "Poder de Especialista"},
+    "65%":{"pe limit": "13","Skill": "Habilidade de Trilha"},
+    "70%":{"pe limit": "14","Skill": "Grau de Treinamento"},
+    "75%":{"pe limit": "15","Skill": "Engenhosidade(Expert), Poder de Especialista"},
+    "80%":{"pe limit": "16","Skill": "Aumento de Atributo"},
+    "85%":{"pe limit": "17","Skill": "Perito (5PE, +1d12)"},
+    "90%":{"pe limit": "18","Skill": "Poder de Especialista"},
+    "95%":{"pe limit": "19","Skill": "Aumento de Atributo"},
+    "99%":{"pe limit": "20","Skill": "Habilidade de Trilha"}
+}

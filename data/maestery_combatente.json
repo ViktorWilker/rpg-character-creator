@@ -1,0 +1,23 @@
+{
+    "5%": {"pe limit": "1","Skill": "Ataque Especial (2PE, +5)"},
+    "10%":{"pe limit": "2","Skill": "Habilidade de Trilha"},
+    "15%":{"pe limit": "3","Skill": "Poder de Combatente"},
+    "20%":{"pe limit": "4","Skill": "Aumento de Atributo"},
+    "25%":{"pe limit": "5","Skill": "Ataque Especial (3PE, +10)"},
+    "30%":{"pe limit": "6","Skill": "Poder de Combatente"},
+    "35%":{"pe limit": "7","Skill": "Grau de Treinamento"},
+    "40%":{"pe limit": "8","Skill": "Habilidade de Trilha"},
+    "45%":{"pe limit": "9","Skill": "Poder de Combatente"},
+    "50%":{"pe limit": "10","Skill": "Aumento de Atributo, versatilidade"},
+    "55%":{"pe limit": "11","Skill": "Ataque Especial (4PE, +15)"},
+    "60%":{"pe limit": "12","Skill": "Poder de Combatente"},
+    "65%":{"pe limit": "13","Skill": "Habilidade de Trilha"},
+    "70%":{"pe limit": "14","Skill": "Grau de Treinamento"},
+    "75%":{"pe limit": "15","Skill": "Poder de Combatente"},
+    "80%":{"pe limit": "16","Skill": "Aumento de Atributo"},
+    "85%":{"pe limit": "17","Skill": "Ataque Especial (5PE, +20)"},
+    "90%":{"pe limit": "18","Skill": "Poder de Combatente"},
+    "95%":{"pe limit": "19","Skill": "Aumento de Atributo"},
+    "99%":{"pe limit": "20","Skill": "Habilidade de Trilha"}
+    
+}

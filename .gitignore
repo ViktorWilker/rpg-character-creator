@@ -1,0 +1,7 @@
+# Dependências Node
+servidor/node_modules/
+
+# Variáveis de ambiente
+servidor/.env
+servidor/firebase-key.json
+.env
