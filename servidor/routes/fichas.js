@@ -83,4 +83,38 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.post('/:id/maestery-up', async (req, res) => {
+
+    try {
+        // Verifica se quem está chamando é o mestre
+        if (req.userId !== process.env.MASTER_UID) {
+            return res.status(403).json({ erro: 'Apenas o mestre pode subir a maestria.' });
+        }
+
+        const ficha = await Ficha.findOne({ _id: req.params.id });
+        if (!ficha) return res.status(404).json({ erro: 'Ficha não encontrada' });
+
+        // Recebe o resultado do MaesteryUp já processado pelo WASM no front
+        // O front chama o WASM, pega o JSON resultante e manda pro servidor
+        const { maesteryResult, dynamicData } = req.body;
+
+        await Ficha.findByIdAndUpdate(req.params.id, {
+            dynamicData: dynamicData,
+            'staticData.maestery':        maesteryResult.novoNivel,
+            'staticData.maesteryIndex': maesteryResult.novoNivel,
+            'staticData.peLimitPerRound': maesteryResult.novoLimitePe,
+            'staticData.pvMax':           dynamicData.pvAtual,
+            'staticData.peMax':           dynamicData.peAtual,
+            'staticData.manaMax':         dynamicData.manaAtual,
+            lastSaved: Date.now()
+        });
+
+        res.json({ sucesso: true, maesteryResult });
+    } catch (err) {
+            console.error('Erro maestery-up:', err);
+        res.status(500).json({ erro: err.message });
+    }
+});
+
+
 module.exports = router;

@@ -60,6 +60,37 @@ std::string GetRegrasDaClasse(const std::string& classe, int intScore) {
     return j.dump();
 }
 
+    std::string Ocultista_GetSkill_JS(int index) {
+    return OcultistaData::GetSkill(static_cast<OcultistaData::Maestery_Ocultista>(index));
+    }
+    bool Ocultista_HasAttrBonus_JS(int index) {
+    return OcultistaData::HasAttributeBonus(static_cast<OcultistaData::Maestery_Ocultista>(index));
+    }
+    std::string Ocultista_GetPeLimit_JS(int index) {
+    return OcultistaData::GetPeLimit(static_cast<OcultistaData::Maestery_Ocultista>(index));
+    }
+
+    std::string Combatente_GetSkill_JS(int index) {
+    return CombatenteData::GetSkill(static_cast<CombatenteData::Maestery_Combatente>(index));
+    }
+    bool Combatente_HasAttrBonus_JS(int index) {
+    return CombatenteData::HasAttributeBonus(static_cast<CombatenteData::Maestery_Combatente>(index));
+    }
+    std::string Combatente_GetPeLimit_JS(int index) {
+    return CombatenteData::GetPeLimit(static_cast<CombatenteData::Maestery_Combatente>(index));
+    }
+
+    std::string Especialista_GetSkill_JS(int index) {
+    return EspecialistaData::GetSkill(static_cast<EspecialistaData::Maestery_Especialista>(index));
+    }
+    bool Especialista_HasAttrBonus_JS(int index) {
+    return EspecialistaData::HasAttributeBonus(static_cast<EspecialistaData::Maestery_Especialista>(index));
+    }
+    std::string Especialista_GetPeLimit_JS(int index) {
+    return EspecialistaData::GetPeLimit(static_cast<EspecialistaData::Maestery_Especialista>(index));
+    }
+    
+
 EMSCRIPTEN_BINDINGS(containers) {
     register_vector<Proficiency>("VectorProficiency");
     register_vector<std::string>("VectorString");
@@ -188,16 +219,17 @@ EMSCRIPTEN_BINDINGS(rpg_module) {
         ;
 }
 
+
 EMSCRIPTEN_BINDINGS(maestery_data_generated) {
-    function("Ocultista_HasAttributeBonus", &OcultistaData::HasAttributeBonus);
-    function("Ocultista_GetSkill",          &OcultistaData::GetSkill);
-    function("Ocultista_GetPeLimit",        &OcultistaData::GetPeLimit);
+        function("Combatente_GetSkill",          &Combatente_GetSkill_JS);
+    function("Combatente_HasAttributeBonus", &Combatente_HasAttrBonus_JS);
+    function("Combatente_GetPeLimit",        &Combatente_GetPeLimit_JS);
 
-    function("Combatente_HasAttributeBonus", &CombatenteData::HasAttributeBonus);
-    function("Combatente_GetSkill",          &CombatenteData::GetSkill);
-    function("Combatente_GetPeLimit",        &CombatenteData::GetPeLimit);
+    function("Especialista_GetSkill",          &Especialista_GetSkill_JS);
+    function("Especialista_HasAttributeBonus", &Especialista_HasAttrBonus_JS);
+    function("Especialista_GetPeLimit",        &Especialista_GetPeLimit_JS);
 
-    function("Especialista_HasAttributeBonus", &EspecialistaData::HasAttributeBonus);
-    function("Especialista_GetSkill",          &EspecialistaData::GetSkill);
-    function("Especialista_GetPeLimit",        &EspecialistaData::GetPeLimit);
+    function("Ocultista_GetSkill",          &Ocultista_GetSkill_JS);
+    function("Ocultista_HasAttributeBonus", &Ocultista_HasAttrBonus_JS);
+    function("Ocultista_GetPeLimit",        &Ocultista_GetPeLimit_JS);
 }

@@ -2,6 +2,8 @@
 #define OCULTISTACHARACTER_H
 
 #include "PlayerCharacter.h"
+#include "Ocultista_Maestery.h"
+
 
 class OcultistaCharacter : public Character{
     public:
@@ -20,6 +22,23 @@ class OcultistaCharacter : public Character{
         }
 
         std::string GetClassName() const override { return "OcultistaCharacter"; }
+        std::string GetMaesterySkill(int index) const override {
+    auto m = static_cast<OcultistaData::Maestery_Ocultista>(index);
+    return OcultistaData::GetSkill(m);
+}
+
+bool GetMaesteryHasAttrBonus(int index) const override {
+    auto m = static_cast<OcultistaData::Maestery_Ocultista>(index);
+    return OcultistaData::HasAttributeBonus(m);
+}
+
+int GetMaesteryPeLimit(int index) const override {
+    auto m = static_cast<OcultistaData::Maestery_Ocultista>(index);
+    return std::stoi(OcultistaData::GetPeLimit(m));
+}
+
+
+
 };
 
 #endif

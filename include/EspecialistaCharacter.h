@@ -2,6 +2,7 @@
 #define ESPECIALISTACHARACTER_H
 
 #include "PlayerCharacter.h"
+#include "Especialista_Maestery.h"
 
 class EspecialistaCharacter : public Character{
     public:
@@ -20,6 +21,21 @@ class EspecialistaCharacter : public Character{
         }
 
         std::string GetClassName() const override { return "EspecialistaCharacter"; }
+std::string GetMaesterySkill(int index) const override {
+    auto m = static_cast<EspecialistaData::Maestery_Especialista>(index);
+    return EspecialistaData::GetSkill(m);
+}
+
+bool GetMaesteryHasAttrBonus(int index) const override {
+    auto m = static_cast<EspecialistaData::Maestery_Especialista>(index);
+    return EspecialistaData::HasAttributeBonus(m);
+}
+
+int GetMaesteryPeLimit(int index) const override {
+    auto m = static_cast<EspecialistaData::Maestery_Especialista>(index);
+    return std::stoi(EspecialistaData::GetPeLimit(m));
+}
+
 };
 
 #endif

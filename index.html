@@ -536,6 +536,8 @@
         }
         .op-btn-save:hover { background: var(--gold-pale); }
 
+
+
         .play-layout {
             display: grid;
             grid-template-columns: 180px 1fr 220px;
@@ -899,7 +901,11 @@
                 </div>
                 <button class="op-btn-save" id="btn-save" onclick="app.savePlayState()">Salvar Estado</button>
             </div>
-
+                <button id="btn-maestery" class="op-btn-save" 
+    style="display:none;border-color:#5a3a8a;color:#9060d8;" 
+    onclick="app.maesteryUp()">
+    ✦ Subir Maestria
+    </button>
             <div class="play-layout">
 
                 <!-- Atributos (desktop) -->

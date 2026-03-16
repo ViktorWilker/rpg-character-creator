@@ -16,7 +16,7 @@ const auth = firebase.auth();
 // CONFIGURAÇÃO DA API
 // ===========================================
 const API_URL = 'http://localhost:3001';
-
+const MASTER_UID = '5c0MguZyiqS1ppCD5Y0WnXNueGG2';
 // ===========================================
 // ESTADO GLOBAL
 // ===========================================
@@ -258,6 +258,36 @@ const app = {
         currentSheetId = docId;
         currentDocData = data;
 
+           if (typeof Module !== 'undefined' && Module.CombatenteCharacter) {
+        const classe = data.staticData.className;
+        if (classe === 'CombatenteCharacter' || classe === 'Combatente') {
+            charObject = new Module.CombatenteCharacter();
+        } else if (classe === 'EspecialistaCharacter' || classe === 'Especialista') {
+            charObject = new Module.EspecialistaCharacter();
+        } else if (classe === 'OcultistaCharacter' || classe === 'Ocultista') {
+            charObject = new Module.OcultistaCharacter();
+        }
+
+        // Popula o charObject com os dados salvos
+        if (charObject) {
+            charObject.setName(data.staticData.name);
+            charObject.setAllAttributesValue(
+                data.staticData.attributes.agi,
+                data.staticData.attributes.str,
+                data.staticData.attributes.int,
+                data.staticData.attributes.pre,
+                data.staticData.attributes.vig
+            );
+            charObject.setPv(data.dynamicData.pvAtual);
+            charObject.setPe(data.dynamicData.peAtual);
+            charObject.setMana(data.dynamicData.manaAtual);
+
+            // Restaura a maestria corretamente
+            const maestery = data.staticData.maestery || 5;
+            charObject.setMaestery(maestery);
+        }
+    }
+
         // Cabeçalho
         document.getElementById('play-char-name').innerText  = data.staticData.name;
         document.getElementById('play-char-class').innerText = `${data.staticData.className} · ${data.staticData.origin || ''}`;
@@ -294,6 +324,13 @@ const app = {
 
         this.updateBarsVisuals();
         this.showPlayScreen();
+
+        // Mostra botão de maestria só pro mestre
+const btnMaestery = document.getElementById('btn-maestery');
+if (btnMaestery) {
+    btnMaestery.style.display = 
+        currentUser && currentUser.uid === MASTER_UID ? 'block' : 'none';
+}
     },
 
     savePlayState: async function() {
@@ -347,8 +384,117 @@ const app = {
         const input = document.getElementById(inputId);
         input.value = (parseInt(input.value) || 0) + amount;
         this.updateBarsVisuals();
+    },
+
+    maesteryUp: async function() {
+            console.log('charObject:', charObject);
+    console.log('currentSheetId:', currentSheetId);
+    console.log('currentDocData:', currentDocData);
+    if (!charObject || !currentSheetId || !currentDocData) return;
+
+    // Processa o level up no WASM
+    const resultJson = charObject.maesteryUp();
+    const maesteryResult = JSON.parse(resultJson);
+
+    // Se retornou erro (nível máximo)
+    if (maesteryResult.erro) {
+        alert(maesteryResult.erro);
+        return;
     }
+
+    // Atualiza os campos visuais
+    document.getElementById('cur-hp').value      = maesteryResult.pvTotal;
+    document.getElementById('cur-stamina').value = maesteryResult.peTotal;
+    document.getElementById('cur-mana').value    = maesteryResult.manaTotal;
+    document.getElementById('val-max-hp').innerText      = maesteryResult.pvTotal;
+    document.getElementById('val-max-stamina').innerText = maesteryResult.peTotal;
+    document.getElementById('val-max-mana').innerText    = maesteryResult.manaTotal;
+    this.updateBarsVisuals();
+
+    // Monta dynamicData atualizado
+    const dynamicData = {
+        pvAtual:    maesteryResult.pvTotal,
+        peAtual:    maesteryResult.peTotal,
+        manaAtual:  maesteryResult.manaTotal,
+        inventario: document.getElementById('play-inventario').value,
+        pericias:   document.getElementById('play-pericias').value
+    };
+
+    // Salva no servidor
+    try {
+        await apiFetch(`/fichas/${currentSheetId}/maestery-up`, {
+            method: 'POST',
+            body: JSON.stringify({ maesteryResult, dynamicData })
+        });
+
+        // Exibe resumo do level up
+        this.showMaesteryModal(maesteryResult);
+    } catch (err) {
+        alert('Erro ao salvar maestria: ' + err.message);
+    }
+},
+
+showMaesteryModal: function(r) {
+    // Remove modal anterior se existir
+    const old = document.getElementById('maestery-modal');
+    if (old) old.remove();
+
+    const aviso = [];
+    if (r.temAumentoAtributo)  aviso.push('✦ Aumento de Atributo — escolha +1 em um atributo (máx 5)');
+    if (r.temGrauTreinamento)  aviso.push('✦ Grau de Treinamento — escolha 2+INT perícias para subir um grau');
+    if (r.temVersatilidade)    aviso.push('✦ Versatilidade — escolha um poder de classe ou trilha');
+
+    const modal = document.createElement('div');
+    modal.id = 'maestery-modal';
+    modal.style.cssText = `
+        position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+        display: flex; align-items: center; justify-content: center;
+        z-index: 9999; font-family: 'Cinzel', serif;
+    `;
+    modal.innerHTML = `
+        <div style="background:#13131a; border:1px solid #c8a84b; padding:2.5rem; max-width:460px; width:90%; position:relative;">
+            <div style="font-size:0.65rem;letter-spacing:0.2em;color:#8a6e2e;margin-bottom:0.5rem;">MAESTRIA</div>
+            <div style="font-size:1.6rem;color:#c8a84b;margin-bottom:1.5rem;">${r.novoNivelStr}</div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1.5rem;">
+                <div style="background:#1a1a24;border:1px solid rgba(160,130,70,0.18);padding:0.85rem;text-align:center;">
+                    <div style="font-size:0.6rem;letter-spacing:0.12em;color:#5a5248;margin-bottom:0.25rem;">PV</div>
+                    <div style="font-size:1.4rem;color:#c0392b;">+${r.pvGanho}</div>
+                </div>
+                <div style="background:#1a1a24;border:1px solid rgba(160,130,70,0.18);padding:0.85rem;text-align:center;">
+                    <div style="font-size:0.6rem;letter-spacing:0.12em;color:#5a5248;margin-bottom:0.25rem;">PE</div>
+                    <div style="font-size:1.4rem;color:#2980b9;">+${r.peGanho}</div>
+                </div>
+                <div style="background:#1a1a24;border:1px solid rgba(160,130,70,0.18);padding:0.85rem;text-align:center;">
+                    <div style="font-size:0.6rem;letter-spacing:0.12em;color:#5a5248;margin-bottom:0.25rem;">MANA</div>
+                    <div style="font-size:1.4rem;color:#8e44ad;">+${r.manaGanho}</div>
+                </div>
+            </div>
+
+            <div style="font-size:0.82rem;color:#9a8f7a;margin-bottom:${aviso.length ? '1rem' : '1.5rem'};">
+                <span style="color:#5a5248;font-size:0.65rem;letter-spacing:0.12em;">HABILIDADE — </span>
+                ${r.habilidade}
+            </div>
+
+            ${aviso.length ? `
+            <div style="border-top:1px solid rgba(160,130,70,0.18);padding-top:1rem;margin-bottom:1.5rem;">
+                ${aviso.map(a => `<div style="font-size:0.78rem;color:#c8a84b;margin-bottom:0.4rem;">${a}</div>`).join('')}
+            </div>` : ''}
+
+            <button onclick="document.getElementById('maestery-modal').remove()"
+                style="width:100%;background:transparent;border:1px solid #c8a84b;color:#c8a84b;
+                font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+                padding:0.85rem;cursor:pointer;">
+                Confirmar
+            </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
 };
+
+
 
 // ===========================================
 // INICIALIZAÇÃO DO WASM

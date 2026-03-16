@@ -10,6 +10,9 @@ const FichaSchema = new mongoose.Schema({
         default: Date.now
     },
     staticData: {
+        maestery:        { type: Number, default: 5 },
+        maesteryIndex:   { type: Number, default: 0 },
+        peLimitPerRound: { type: Number, default: 1 },
         name: { type: String, required: true },
         className: { type: String, required: true },
         origin: { type: String, default: '' },
