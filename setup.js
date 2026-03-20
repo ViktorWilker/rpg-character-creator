@@ -97,7 +97,19 @@ const app = {
             if (el) el.textContent = '1';
         });
         const pointsEl = document.getElementById('pointsLeft');
-        if (pointsEl) pointsEl.textContent = '5';
+        if (pointsEl) pointsEl.textContent = '4';
+
+        if (typeof attrs !== 'undefined') {
+    attrs = { agi:1, str:1, int:1, pre:1, vig:1 };
+    choiceSelections  = {};
+    freeSelectedProfs = [];
+    originLockedProfs = [];
+    selectedClass     = 'Combatente';
+    buildChoicesSection();
+    buildProfGrid();
+    updateProfCounter();
+    updateStats();
+}
 
         // Reseta seleção de classe pra Combatente
         document.querySelectorAll('.op-class-card').forEach(c => c.classList.remove('selected'));
@@ -161,7 +173,7 @@ const app = {
                 item.innerHTML = `
                     <div>
                         <div class="op-ficha-name">${ficha.staticData.name}</div>
-                        <div class="op-ficha-meta">${ficha.staticData.className} · ${ficha.staticData.origin || 'Origem desconhecida'}</div>
+                        <div class="op-ficha-meta">${ficha.staticData.className} · ${ficha.staticData.origin || 'Origem desconhecida'} · Maestria ${ficha.staticData.maestery || 5}%</div>
                     </div>
                     <div class="op-ficha-badge">PV ${ficha.dynamicData.pvAtual} / ${ficha.staticData.pvMax}</div>
                 `;
@@ -194,8 +206,10 @@ const app = {
                 vig: getAttr('val-vig'),
             },
             defesa:       parseInt(document.getElementById('create-def').value) || 10,
-            proficiencies: typeof selectedProfs !== 'undefined' ? [...selectedProfs] : [],
-            // Valores máximos — calculados abaixo (pelo WASM ou pelo front)
+            proficiencies: typeof getAllSelectedProfs === 'function' ? getAllSelectedProfs() : [],
+            maestery:      MAESTERY_LEVELS[parseInt(document.getElementById('create-maestery')?.value) || 0],
+            maesteryIndex: parseInt(document.getElementById('create-maestery')?.value) || 0,
+            peLimitPerRound: (parseInt(document.getElementById('create-maestery')?.value) || 0) + 1,
             pvMax:   0,
             peMax:   0,
             manaMax: 0,
@@ -290,8 +304,7 @@ const app = {
 
         // Cabeçalho
         document.getElementById('play-char-name').innerText  = data.staticData.name;
-        document.getElementById('play-char-class').innerText = `${data.staticData.className} · ${data.staticData.origin || ''}`;
-
+document.getElementById('play-char-class').innerText = `${data.staticData.className} · ${data.staticData.origin || ''} · Maestria ${data.staticData.maestery || 5}%`;
         // Atributos desktop
         document.getElementById('play-for').innerText = data.staticData.attributes.str;
         document.getElementById('play-agi').innerText = data.staticData.attributes.agi;
