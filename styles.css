@@ -352,3 +352,241 @@ body::before {
     .op-row-2 { grid-template-columns: 1fr; }
     .op-stats-preview { grid-template-columns: 1fr; }
 }
+
+/* =============================================
+   ADICIONAR AO FINAL DO styles.css
+============================================= */
+
+/* Barra de atributos compacta (sempre visível) */
+.play-attrs-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+.play-attr-pill {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.play-attr-pill-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+}
+.play-attr-pill-val {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* ABAS */
+.play-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+.play-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text3);
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    margin-bottom: -1px;
+}
+.play-tab-btn:hover { color: var(--text2); }
+.play-tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+.play-tab-content { display: none; }
+.play-tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+
+/* Vitais em grid na aba status */
+.play-vitals-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* PERÍCIAS */
+.play-prof-legend {
+    display: flex;
+    gap: 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+.play-prof-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+.play-prof-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.55rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.play-prof-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+.play-prof-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.play-prof-bonus {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    min-width: 32px;
+    text-align: right;
+}
+.play-prof-grau-select {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.play-prof-grau-select:focus { border-color: var(--gold-dim); }
+.play-prof-grau-select option { background: #17171f; }
+
+/* INVENTÁRIO */
+.inv-add-form {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+.inv-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 120px;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.inv-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    transition: border-color 0.2s;
+}
+.inv-card:hover { border-color: var(--border2); }
+.inv-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+}
+.inv-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+.inv-card-tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+.inv-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--text3);
+}
+.inv-card-desc {
+    font-size: 0.82rem;
+    color: var(--text3);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+.inv-btn-remove {
+    background: none;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.inv-btn-remove:hover { background: rgba(160,40,40,0.15); color: var(--red-light); }
+
+/* PODERES */
+.powers-group { margin-bottom: 2rem; }
+.powers-group-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+}
+.power-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-dim);
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.5rem;
+}
+.power-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+}
+.power-card-desc {
+    font-size: 0.85rem;
+    color: var(--text2);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .inv-form-grid { grid-template-columns: 1fr 1fr; }
+    .play-tabs { overflow-x: auto; }
+    .play-tab-btn { padding: 0.75rem 0.85rem; font-size: 0.6rem; }
+}

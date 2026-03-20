@@ -364,7 +364,7 @@ function onOriginChange() {
 function changeAttr(key, delta) {
     const newVal = attrs[key] + delta;
     const maxAttr = totalPoints > 4 ? 5 : 3;
-if (newVal < 0 || newVal > maxAttr) return;
+    if (newVal < 0 || newVal > maxAttr) return;
     if (delta > 0 && getPointsUsed() >= totalPoints) return;
     attrs[key] = newVal;
     document.getElementById('val-' + key).textContent = newVal;

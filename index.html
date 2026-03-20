@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="op-nav">
         <div class="op-nav-brand" onclick="app.showDashboard()">
             <div class="op-nav-brand-symbol">✦</div>
@@ -64,14 +63,12 @@
     <!-- CRIAÇÃO -->
     <div id="creation-screen" class="screen">
         <div class="op-container">
-
             <div class="op-creation-header">
                 <button class="op-btn-back" onclick="app.showDashboard()">← Cancelar</button>
                 <div style="font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.1em;color:var(--gold)">Novo Agente</div>
                 <button class="op-btn-add" onclick="app.saveNewCharacter()">Forjar Ficha</button>
             </div>
 
-            <!-- Identificação -->
             <div class="op-section">
                 <div class="op-section-title">Identificação</div>
                 <div class="op-row-2">
@@ -86,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- Classe -->
             <div class="op-section">
                 <div class="op-section-title">Classe</div>
                 <div class="op-class-grid">
@@ -108,44 +104,29 @@
                 </div>
             </div>
 
-            <!-- Origem -->
             <div class="op-section">
                 <div class="op-section-title">Origem</div>
                 <div class="op-field">
                     <label class="op-label">Origem do Personagem</label>
                     <select id="create-origin" class="op-select" onchange="onOriginChange()">
                         <option value="">Selecione uma origem...</option>
-                        <option>Erudito Arcano</option>
-                        <option>Curandeiro de Aldeia</option>
-                        <option>Amnésico</option>
-                        <option>Bardo Errante</option>
-                        <option>Gladiador</option>
-                        <option>Alquimista de Ervas</option>
-                        <option>Ladrão de Ruínas</option>
-                        <option>Ex-Iniciado das Trevas</option>
-                        <option>Sobrevivente das Terras Vazias</option>
-                        <option>Artífice Mecânico</option>
-                        <option>Mercador Astuto</option>
-                        <option>Caçador de Segredos</option>
-                        <option>Brutamontes</option>
-                        <option>Patrono Misterioso</option>
-                        <option>Mercenário</option>
-                        <option>Soldado Veterano</option>
-                        <option>Mineiro das Profundezas</option>
-                        <option>Guarda da Cidade</option>
-                        <option>Sacerdote</option>
-                        <option>Escriba do Conselho</option>
-                        <option>Profeta de Ruínas</option>
-                        <option>Tecnoarqueólogo</option>
-                        <option>Camponês Errante</option>
-                        <option>Charlatão</option>
-                        <option>Aprendiz de Academia Arcana</option>
-                        <option>Sobrevivente das Trevas</option>
+                        <option>Erudito Arcano</option><option>Curandeiro de Aldeia</option>
+                        <option>Amnésico</option><option>Bardo Errante</option>
+                        <option>Gladiador</option><option>Alquimista de Ervas</option>
+                        <option>Ladrão de Ruínas</option><option>Ex-Iniciado das Trevas</option>
+                        <option>Sobrevivente das Terras Vazias</option><option>Artífice Mecânico</option>
+                        <option>Mercador Astuto</option><option>Caçador de Segredos</option>
+                        <option>Brutamontes</option><option>Patrono Misterioso</option>
+                        <option>Mercenário</option><option>Soldado Veterano</option>
+                        <option>Mineiro das Profundezas</option><option>Guarda da Cidade</option>
+                        <option>Sacerdote</option><option>Escriba do Conselho</option>
+                        <option>Profeta de Ruínas</option><option>Tecnoarqueólogo</option>
+                        <option>Camponês Errante</option><option>Charlatão</option>
+                        <option>Aprendiz de Academia Arcana</option><option>Sobrevivente das Trevas</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Atributos -->
             <div class="op-section">
                 <div class="op-section-title">Atributos</div>
                 <div class="op-attr-grid">
@@ -190,12 +171,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="op-points-info">
-                    Pontos disponíveis: <span id="pointsLeft">4</span> / 4
-                </div>
+                <div class="op-points-info">Pontos disponíveis: <span id="pointsLeft">4</span> / 4</div>
             </div>
 
-            <!-- Estatísticas -->
             <div class="op-section">
                 <div class="op-section-title">Estatísticas</div>
                 <div class="op-stats-preview">
@@ -214,7 +192,6 @@
                 </div>
             </div>
 
-            <!-- Proficiências -->
             <div class="op-section">
                 <div class="op-section-title">Proficiências</div>
                 <div id="profChoices" class="op-prof-choices" style="display:none;"></div>
@@ -227,7 +204,6 @@
                 </div>
             </div>
 
-            <!-- Defesa -->
             <div class="op-section">
                 <div class="op-section-title">Defesa</div>
                 <div style="max-width:200px;">
@@ -236,7 +212,6 @@
                 </div>
             </div>
 
-            <!-- Maestria Inicial -->
             <div class="op-section">
                 <div class="op-section-title">Maestria Inicial</div>
                 <div style="display:flex;align-items:center;gap:1rem;">
@@ -255,6 +230,7 @@
     <div id="play-screen" class="screen">
         <div class="op-container">
 
+            <!-- Cabeçalho -->
             <div class="play-header">
                 <button class="op-btn-back" onclick="app.showDashboard()">← Voltar</button>
                 <div class="play-char-info">
@@ -262,28 +238,59 @@
                     <div class="play-char-class" id="play-char-class">—</div>
                 </div>
                 <div style="display:flex;gap:0.5rem;flex-direction:column;align-items:flex-end;">
-                    <button class="op-btn-save" id="btn-save" onclick="app.savePlayState()">Salvar Estado</button>
+                    <button class="op-btn-save" id="btn-save" onclick="app.savePlayState()">Salvar</button>
                     <button id="btn-maestery" class="op-btn-save"
                         style="display:none;border-color:#5a3a8a;color:#9060d8;"
                         onclick="app.maesteryUp()">✦ Subir Maestria</button>
                 </div>
             </div>
 
-            <div class="play-layout">
-
-                <div class="play-attrs">
-                    <div class="play-attr-box"><span class="play-attr-label">Força</span><span class="play-attr-val" id="play-for">—</span></div>
-                    <div class="play-attr-box"><span class="play-attr-label">Agilidade</span><span class="play-attr-val" id="play-agi">—</span></div>
-                    <div class="play-attr-box"><span class="play-attr-label">Intelecto</span><span class="play-attr-val" id="play-int">—</span></div>
-                    <div class="play-attr-box"><span class="play-attr-label">Presença</span><span class="play-attr-val" id="play-pre">—</span></div>
-                    <div class="play-attr-box"><span class="play-attr-label">Vigor</span><span class="play-attr-val" id="play-vig">—</span></div>
-                    <div class="play-def-box">
-                        <div class="play-def-label">Defesa</div>
-                        <div class="play-def-val" id="play-def">—</div>
-                    </div>
+            <!-- Atributos sempre visíveis -->
+            <div class="play-attrs-bar">
+                <div class="play-attr-pill">
+                    <span class="play-attr-pill-label">FOR</span>
+                    <span class="play-attr-pill-val" id="play-for">—</span>
                 </div>
+                <div class="play-attr-pill">
+                    <span class="play-attr-pill-label">AGI</span>
+                    <span class="play-attr-pill-val" id="play-agi">—</span>
+                </div>
+                <div class="play-attr-pill">
+                    <span class="play-attr-pill-label">INT</span>
+                    <span class="play-attr-pill-val" id="play-int">—</span>
+                </div>
+                <div class="play-attr-pill">
+                    <span class="play-attr-pill-label">PRE</span>
+                    <span class="play-attr-pill-val" id="play-pre">—</span>
+                </div>
+                <div class="play-attr-pill">
+                    <span class="play-attr-pill-label">VIG</span>
+                    <span class="play-attr-pill-val" id="play-vig">—</span>
+                </div>
+                <div class="play-attr-pill">
+                    <span class="play-attr-pill-label">DEF</span>
+                    <span class="play-attr-pill-val" id="play-def">—</span>
+                </div>
+                <!-- mobile compat -->
+                <span id="mob-for" style="display:none"></span>
+                <span id="mob-agi" style="display:none"></span>
+                <span id="mob-int" style="display:none"></span>
+                <span id="mob-pre" style="display:none"></span>
+                <span id="mob-vig" style="display:none"></span>
+                <span id="mob-def" style="display:none"></span>
+            </div>
 
-                <div class="play-vitals">
+            <!-- ABAS -->
+            <div class="play-tabs">
+                <button class="play-tab-btn active" data-tab="status"    onclick="app.switchTab('status')">Status</button>
+                <button class="play-tab-btn"         data-tab="pericias"  onclick="app.switchTab('pericias')">Perícias</button>
+                <button class="play-tab-btn"         data-tab="inventario" onclick="app.switchTab('inventario')">Inventário</button>
+                <button class="play-tab-btn"         data-tab="poderes"   onclick="app.switchTab('poderes')">Poderes</button>
+            </div>
+
+            <!-- ABA STATUS -->
+            <div id="tab-status" class="play-tab-content active">
+                <div class="play-vitals-grid">
                     <div class="vital-block">
                         <div class="vital-header">
                             <span class="vital-name pv">Pontos de Vida</span>
@@ -321,33 +328,70 @@
                         <div class="vital-bar"><div id="bar-mana" class="vital-bar-fill bar-mana" style="width:0%"></div></div>
                     </div>
                 </div>
-
-                <div class="play-notes">
-                    <div class="play-note-block">
-                        <div class="play-note-title">Perícias & Notas</div>
-                        <textarea id="play-pericias" class="play-textarea"></textarea>
-                    </div>
-                    <div class="play-note-block">
-                        <div class="play-note-title">Inventário</div>
-                        <textarea id="play-inventario" class="play-textarea"></textarea>
-                    </div>
+                <div class="op-section" style="margin-top:1.5rem;">
+                    <div class="op-section-title">Notas</div>
+                    <textarea id="play-notas" class="play-textarea" style="min-height:140px;width:100%;"></textarea>
                 </div>
-
             </div>
 
-            <div class="play-mobile-attrs">
-                <div class="play-mobile-attr">FOR <span id="mob-for">—</span></div>
-                <div class="play-mobile-attr">AGI <span id="mob-agi">—</span></div>
-                <div class="play-mobile-attr">INT <span id="mob-int">—</span></div>
-                <div class="play-mobile-attr">PRE <span id="mob-pre">—</span></div>
-                <div class="play-mobile-attr">VIG <span id="mob-vig">—</span></div>
-                <div class="play-mobile-attr">DEF <span id="mob-def">—</span></div>
+            <!-- ABA PERÍCIAS -->
+            <div id="tab-pericias" class="play-tab-content">
+                <div class="play-prof-legend">
+                    <span style="color:var(--text2)">T = Treinado (+5)</span>
+                    <span style="color:var(--gold)">V = Veterano (+10)</span>
+                    <span style="color:var(--purple-light)">E = Expert (+15)</span>
+                </div>
+                <div id="play-prof-list" class="play-prof-list"></div>
+            </div>
+
+            <!-- ABA INVENTÁRIO -->
+            <div id="tab-inventario" class="play-tab-content">
+                <div class="inv-add-form">
+                    <div class="op-section-title">Adicionar Item</div>
+                    <div class="inv-form-grid">
+                        <div class="op-field">
+                            <label class="op-label">Nome</label>
+                            <input type="text" id="inv-nome" class="op-input" placeholder="Nome do item..." />
+                        </div>
+                        <div class="op-field">
+                            <label class="op-label">Categoria</label>
+                            <select id="inv-categoria" class="op-select">
+                                <option value="item">Item</option>
+                                <option value="arma">Arma</option>
+                                <option value="proteção">Proteção</option>
+                                <option value="consumível">Consumível</option>
+                                <option value="utensílio">Utensílio</option>
+                            </select>
+                        </div>
+                        <div class="op-field">
+                            <label class="op-label">Peso (espaços)</label>
+                            <input type="number" id="inv-peso" class="op-input" value="0" min="0" step="0.5" />
+                        </div>
+                    </div>
+                    <div class="op-field">
+                        <label class="op-label">Descrição</label>
+                        <input type="text" id="inv-descricao" class="op-input" placeholder="Descrição opcional..." />
+                    </div>
+                    <button class="op-btn-add" style="margin-top:0.5rem;" onclick="app.addInventoryItem()">+ Adicionar</button>
+                </div>
+
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin:1.5rem 0 0.75rem;">
+                    <div class="op-section-title" style="margin-bottom:0;">Itens</div>
+                    <div style="font-size:0.78rem;color:var(--text3);font-style:italic;">
+                        Total: <strong id="inv-total-peso" style="color:var(--gold);font-family:'Cinzel',serif;">0</strong> espaços
+                    </div>
+                </div>
+                <div id="play-inventory-list"></div>
+            </div>
+
+            <!-- ABA PODERES -->
+            <div id="tab-poderes" class="play-tab-content">
+                <div id="play-powers-list"></div>
             </div>
 
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="creation.js"></script>
